@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  netpulse:
+    build: .
+    image: munna2053/netpulse:latest
+    ports:
+      - "8765:8765"
+    restart: unless-stopped
+    volumes:
+      - ./:/app:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    # If you prefer not to build, you can run directly from the official python image:
+    # image: python:3.11-slim
+    # command: python -c "import internet_tester as app; app.HOST='0.0.0.0'; app.main()"
